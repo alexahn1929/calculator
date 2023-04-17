@@ -1,3 +1,10 @@
+/**
+ * Compute the result of a mathematical operation.
+ * @param {number} n1 
+ * @param {string} operator 
+ * @param {number} n2 
+ * @returns the result of the mathematical operation
+ */
 function operate(n1, operator, n2) {
     switch(operator) {
         case "+":
@@ -19,6 +26,10 @@ let canEvaluate;
 
 let display = document.querySelector("#display");
 
+/**
+ * Display a number, paying mind to the length limits of the display and resetting the number to zero if it is too large to be displayed.
+ * @param {number} n 
+ */
 function displayNumber(n) {
     let displayString = ""+n;
     if ((displayString.includes(".") && displayString.indexOf(".") > MAX_DISPLAY_LEN) || //reset the number to 0 if the number of digits pre-decimal point exceeds max display length
@@ -29,6 +40,9 @@ function displayNumber(n) {
     }
 }
 
+/**
+ * Swap the sign of the displayed number.
+ */
 function negate() {
     displayNumber(-1*Number(display.textContent));
 }
@@ -48,6 +62,9 @@ function clearDisplay() {
     canConcat = true;
 }
 
+/**
+ * Evaluate a mathematical expression, if one has been inputted, and display the result.
+ */
 function evaluate() {
     if(!canEvaluate) {
         return;
@@ -60,6 +77,10 @@ function evaluate() {
     canEvaluate = false;
 }
 
+/**
+ * Input a mathematical operation to be performed (+, -, *, or /). If a prior operation had already been inputted, evaluate and display the result of it first.
+ * @param {string} operator 
+ */
 function pressOperator(operator) {
     if(storedOperator !== "") {
         evaluate();
@@ -69,6 +90,11 @@ function pressOperator(operator) {
     canConcat = false;
 }
 
+/**
+ * Attempt to add a digit ([0-9] or '.') to the display. Clears the existing numbers on the screen if digits are not allowed to be added onto the current number
+ * (ex. immediately after pressing an operation button or equals)
+ * @param {string} digit 
+ */
 function pressNumber(digit) {
     if (canConcat) { //can only add digits right after pressing an operator or clearing
         if(display.textContent.length < MAX_DISPLAY_LEN) {
