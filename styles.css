@@ -1,0 +1,49 @@
+body {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+
+    margin: 0px;
+    background-color: #2a2a33;
+}
+
+#container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+
+    margin: 100px 500px;
+    padding: 10px 10px;
+    background-color: #817a7a;
+}
+
+.row {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    gap: 2px;
+}
+
+#display {
+    font-size: 36pt;
+    color: #d8d8d8;
+    text-align: right;
+    padding: 12px 24px 0px 0px;
+}
+
+button {
+    flex: 1;
+    font-size: 20pt;
+    border-radius: 5px;
+}
+
+.digit {
+    background-color: #aaaaaa;
+    color: #333333;
+}
+
+.operation {
+    background-color: #635d5d;
+    color: #d8d8d8;
+}

@@ -18,7 +18,7 @@ function operate(n1, operator, n2) {
     }
 }
 
-const MAX_DISPLAY_LEN = 10;
+const MAX_DISPLAY_LEN = 20;
 let canConcat;
 let storedOperator;
 let storedNumber;
@@ -135,8 +135,14 @@ let container = document.querySelector("#container");
 const buttonLayout = [["7", "8", "9", "+"], ["4", "5", "6", "-"], ["1", "2", "3", "*"], ["+/-", "0", ".", "/"], ["=", "Clear"]];
 for (let r of buttonLayout) {
     let row = document.createElement("div");
+    row.classList.add("row");
     for (let btnVal of r) {
         let btn = document.createElement("button");
+        if (DIGITS.includes(btnVal)) {
+            btn.classList.add("digit");
+        } else {
+            btn.classList.add("operation");
+        }
         btn.textContent = btnVal;
         btn.addEventListener("click", (e) => callbacks[btnVal](e.target.textContent));
         row.appendChild(btn);
